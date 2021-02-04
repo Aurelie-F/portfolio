@@ -9,8 +9,19 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-    <header>{% include '_includes/_admin-navbar.html.twig' %}</header>
-    <main>{% block body %}{% endblock %}</main>
+<header>{% include '_includes/_admin-navbar.html.twig' %}</header>
+    <main>
+        <div class="container">
+            {% for category, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+    </main>
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}

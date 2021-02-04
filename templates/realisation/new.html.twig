@@ -1,0 +1,9 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block body %}
+    <h1 class="my-4 text-center">Créer une nouvelle réalisation</h1>
+
+    {{ include('realisation/_form.html.twig') }}
+
+    <a class="btn btn-outline-dark mt-5" href="{{ path('realisation_index') }}">Retour</a>
+{% endblock %}

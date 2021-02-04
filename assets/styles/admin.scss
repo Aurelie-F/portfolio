@@ -15,3 +15,7 @@ body {
 main > .container {
     padding-top: $spacing * 10;
 }
+
+td > .btn {
+    padding: 0;
+}
