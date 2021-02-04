@@ -3,8 +3,15 @@
 $line-width: 60px;
 $line-height: 1px;
 $font-size-h2: 1.75rem;
+$font-size-h3: 1.5rem;
 $img-size: 20vw;
-$img-size-responsive: 30vw;
+$img-size-responsive: 35vw;
+$card-background-color: rgba(18, 24, 43, 0.65);
+$card-width: 18vw;
+$card-height: 14vw;
+$card-border-radius: 5%;
+$card-width-responsive: 60vw;
+$card-height-responsive: 50vw;
 
 .header {
     height: 100vh;
@@ -13,12 +20,14 @@ $img-size-responsive: 30vw;
     background-size: cover;
 }
 
-h1, #presentation h2 {
+h1 {
     text-transform: uppercase;
 }
 
-#presentation h2 {
-    font-size: $font-size-h2;
+#presentation, #realisation {
+    h2 {
+        font-size: $font-size-h2;
+    }
 }
 
 .line-light, .line-dark {
@@ -60,5 +69,54 @@ h1, #presentation h2 {
                 width: $img-size-responsive;
             }
         }
+    }
+}
+
+#realisation {
+    background-color: darken($primary, 5%);
+}
+
+.card-inverse .card-img-overlay {
+    background-color: $card-background-color;
+}
+
+.card, .card-img-overlay, .card-img {
+    width: $card-width;
+    height: $card-height;
+    border-radius: $card-border-radius;
+}
+
+.card-img-overlay {
+    h3 {
+        font-size: $font-size-h3;
+    }
+
+    &:hover h3, &:focus h3, &:active h3 {
+        display: none;
+    }
+
+    .info {
+        display: none;
+    }
+
+    &:hover .info, &:focus .info, &:active .info {
+        display: block;
+    }
+}
+
+.card-inverse:hover {
+    transform: scale(1.02);
+}
+
+@media screen and (max-width: 767px) {
+    .realisation-responsive {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card, .card-img-overlay, .card-img {
+        width: $card-width-responsive;
+        height: $card-height-responsive;
     }
 }
