@@ -11,3 +11,18 @@ body {
     background-color: $primary;
     font-family: 'Poppins', sans-serif;
 }
+
+.navbar {
+    top: 0;
+    background: transparent !important;
+    color: $light !important;
+}
+
+.navbar.scrolled {
+    background: $light !important;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.05);
+}
+
+.nav-link {
+    text-transform: uppercase;
+}

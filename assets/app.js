@@ -23,3 +23,29 @@ require('bootstrap');
 $(document).ready(() => {
     $('[data-toggle="popover"]').popover();
 });
+
+$(".navbar .nav-link").on("click", function(){
+    $(".navbar").find(".active").removeClass("active");
+    $(this).addClass("active");
+});
+
+$(window).scroll(function () {
+    let $height = $(window).height();
+    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height);
+});
+
+// Change width value on page load
+$(document).ready(function(){
+    responsive_resize();
+});
+
+// Change width value on user resize, after DOM
+$(window).resize(function(){
+    responsive_resize();
+});
+
+function responsive_resize(){
+    if ($(window).width() < 768) {
+        $('nav').addClass('navbar-dark');
+    }
+}

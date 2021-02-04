@@ -1,0 +1,21 @@
+@import 'app';
+
+$line-width: 60px;
+$line-height: 1px;
+
+.header {
+    height: 100vh;
+    background: no-repeat linear-gradient(rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.5)), url("/assets/images/computer.jpg");
+    background-size: cover;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+.line {
+    background: $light;
+    width: $line-width;
+    height: $line-height;
+}
