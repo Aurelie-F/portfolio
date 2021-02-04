@@ -6,12 +6,31 @@
 
 {% block body %}
     <div class="container-fluid p-0 m-0">
-        <div class="header d-flex align-items-center justify-content-center">
+        <section class="header d-flex align-items-center justify-content-center">
             <div class="text-light mb-4 d-flex flex-column align-items-center">
                 <h1 class="mb-1">Aurélie <strong>Frarin</strong></h1>
-                <div class="line my-2"></div>
+                <div class="line-light my-2"></div>
                 <h2>Développeuse web</h2>
             </div>
-        </div>
+        </section>
+        <section id="presentation" class="d-flex flex-column align-items-center pt-4">
+            <h2 class="my-4 text-center">Présentation</h2>
+            <div class="line-dark mb-4"></div>
+            <div class="row align-items-center justify-content-center presentation-responsive my-4">
+                <div class="col-lg-4 mr-lg-5 col-sm-12 text-wrap text-center text-presentation">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mattis sapien, at convallis purus.
+                    Donec porta ex orci. Nullam turpis tellus, pellentesque at erat eu, eleifend varius arcu.
+                    Nunc sit amet hendrerit purus, sed sollicitudin ligula. Duis non lacus quis sapien ultricies
+                    hendrerit. Nulla efficitur eros non lorem commodo aliquam. Fusce feugiat pulvinar lacinia. Donec non
+                    ipsum vitae mi egestas rhoncus. In viverra turpis in elit dignissim luctus. Maecenas posuere urna id
+                    ipsum feugiat, vitae cursus ex luctus. Aenean mollis eu felis nec maximus.
+                </div>
+                <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                    <div class="img-presentation">
+                        <img src="{{ asset('build/images/presentation.jpeg') }}" alt="Présentation">
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}
