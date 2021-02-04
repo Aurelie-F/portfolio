@@ -1,0 +1,14 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block body %}
+    <h1 class="my-4 text-center">Modifier la réalisation #{{ realisation.id }}</h1>
+
+    {{ include('realisation/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <div class="row my-5">
+        <div class="col-1 mr-2">
+            <a class="btn btn-outline-dark" href="{{ path('realisation_index') }}">Retour</a>
+        </div>
+        {{ include('realisation/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
