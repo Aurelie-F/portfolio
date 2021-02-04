@@ -13,10 +13,10 @@
                 <h2>Développeuse web</h2>
             </div>
         </section>
-        <section id="presentation" class="d-flex flex-column align-items-center pt-4">
-            <h2 class="my-4 text-center">Présentation</h2>
+        <section id="presentation" class="d-flex flex-column align-items-center py-4">
+            <h2 class="my-4 text-center text-uppercase">Présentation</h2>
             <div class="line-dark mb-4"></div>
-            <div class="row align-items-center justify-content-center presentation-responsive my-4">
+            <div class="row align-items-center justify-content-center presentation-responsive my-4 mx-0">
                 <div class="col-lg-4 mr-lg-5 col-sm-12 text-wrap text-center text-presentation">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mattis sapien, at convallis purus.
                     Donec porta ex orci. Nullam turpis tellus, pellentesque at erat eu, eleifend varius arcu.
@@ -30,6 +30,27 @@
                         <img src="{{ asset('build/images/presentation.jpeg') }}" alt="Présentation">
                     </div>
                 </div>
+            </div>
+        </section>
+        <section id="realisation" class="d-flex flex-column align-items-center py-4">
+            <h2 class="my-4 text-center text-uppercase">Réalisations</h2>
+            <div class="line-dark mb-4"></div>
+            <div class="row my-4 justify-content-around realisation-responsive">
+                {% for realisation in realisations %}
+                    <div class="col-lg-4 mb-3">
+                        <div class="card text-white card-inverse">
+                            <img src="/uploads/{{ realisation.photo1 }}" class="card-img" alt="{{ realisation.title }}">
+                            <div class="card-img-overlay d-flex">
+                                <h3 class="card-title align-self-center text-center mx-auto">
+                                    {{ realisation.title }}
+                                </h3>
+                                <div class="info align-self-center text-center mx-auto">
+                                    {{ realisation.description }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </section>
     </div>
