@@ -20,6 +20,10 @@ $card-height-responsive: 50vw;
     background-size: cover;
 }
 
+main > .container {
+    padding-top: $spacing * 10;
+}
+
 h1 {
     text-transform: uppercase;
 }
@@ -128,12 +132,12 @@ h1 {
     }
 }
 
-#contact-section {
+#contact-section, #realisation-details {
     padding-bottom: $spacing * 18;
 }
 
 @media screen and (min-width: 768px) {
-    .contact-responsive {
+    .contact-responsive, .carousel {
         width: 50% !important;
     }
 }

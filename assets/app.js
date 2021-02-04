@@ -31,7 +31,7 @@ $(".navbar .nav-link").on("click", function(){
 
 $(window).scroll(function () {
     let $height = $(window).height();
-    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height);
+    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height - 5);
     $('footer').toggleClass('scrolled', $(this).scrollTop() > 1);
 });
 
