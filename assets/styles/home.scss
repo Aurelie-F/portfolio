@@ -4,7 +4,7 @@ $line-width: 60px;
 $line-height: 1px;
 $font-size-h2: 1.75rem;
 $font-size-h3: 1.5rem;
-$img-size: 20vw;
+$img-size: 18vw;
 $img-size-responsive: 35vw;
 $card-background-color: rgba(18, 24, 43, 0.65);
 $card-width: 18vw;
@@ -24,7 +24,7 @@ h1 {
     text-transform: uppercase;
 }
 
-#presentation, #realisation {
+#presentation, #realisation, #contact-section {
     h2 {
         font-size: $font-size-h2;
     }
@@ -43,6 +43,10 @@ h1 {
     background: $dark;
 }
 
+.text-presentation {
+    text-align: justify !important;
+}
+
 .img-presentation {
     background: black;
     overflow: hidden;
@@ -54,14 +58,17 @@ h1 {
     }
 }
 
+@media screen and (min-width: 768px) {
+    .presentation-responsive {
+        width: 75% !important;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .presentation-responsive {
         flex-direction: column-reverse;
         margin-right: 1rem;
         margin-left: 1rem;
-        .text-presentation {
-            text-align: justify !important;
-        }
         .img-presentation {
             margin-bottom: 2rem;
             width: $img-size-responsive;
@@ -118,5 +125,15 @@ h1 {
     .card, .card-img-overlay, .card-img {
         width: $card-width-responsive;
         height: $card-height-responsive;
+    }
+}
+
+#contact-section {
+    padding-bottom: $spacing * 18;
+}
+
+@media screen and (min-width: 768px) {
+    .contact-responsive {
+        width: 50% !important;
     }
 }

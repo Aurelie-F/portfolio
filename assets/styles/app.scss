@@ -23,4 +23,10 @@ body {
 
 footer {
     background-color: $light;
+    box-shadow: 0 -6px 30px rgba(0,0,0,0.1);
+    display: none;
+}
+
+footer.scrolled {
+    display: block;
 }

@@ -13,11 +13,11 @@
                 <h2>Développeuse web</h2>
             </div>
         </section>
-        <section id="presentation" class="d-flex flex-column align-items-center py-4">
+        <section id="presentation" class="d-flex flex-column align-items-center py-5">
             <h2 class="my-4 text-center text-uppercase">Présentation</h2>
             <div class="line-dark mb-4"></div>
             <div class="row align-items-center justify-content-center presentation-responsive my-4 mx-0">
-                <div class="col-lg-4 mr-lg-5 col-sm-12 text-wrap text-center text-presentation">
+                <div class="col-lg-5 col-sm-12 text-wrap text-presentation">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mattis sapien, at convallis purus.
                     Donec porta ex orci. Nullam turpis tellus, pellentesque at erat eu, eleifend varius arcu.
                     Nunc sit amet hendrerit purus, sed sollicitudin ligula. Duis non lacus quis sapien ultricies
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </section>
-        <section id="realisation" class="d-flex flex-column align-items-center py-4">
+        <section id="realisation" class="d-flex flex-column align-items-center py-5">
             <h2 class="my-4 text-center text-uppercase">Réalisations</h2>
             <div class="line-dark mb-4"></div>
             <div class="row my-4 justify-content-around realisation-responsive">
@@ -51,6 +51,23 @@
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </section>
+        <section id="contact-section" class="d-flex flex-column align-items-center pt-5">
+            <h2 class="my-4 text-center text-uppercase">Contact</h2>
+            <div class="line-dark mb-4"></div>
+            <div class="contact-responsive">
+                {% for category, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {{ form_start(form, {'attr': {'class': 'd-flex flex-column justify-content-center'}}) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-dark align-self-center my-3">Envoyer</button>
+                {{ form_end(form) }}
             </div>
         </section>
     </div>

@@ -32,6 +32,7 @@ $(".navbar .nav-link").on("click", function(){
 $(window).scroll(function () {
     let $height = $(window).height();
     $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height);
+    $('footer').toggleClass('scrolled', $(this).scrollTop() > 1);
 });
 
 // Change width value on page load
