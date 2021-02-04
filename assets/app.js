@@ -47,5 +47,13 @@ $(window).resize(function(){
 function responsive_resize(){
     if ($(window).width() < 768) {
         $('nav').addClass('navbar-dark');
+        $(window).scroll(function () {
+            let $height = $(window).height();
+            if ($(this).scrollTop() > $height) {
+                $('nav').addClass('scrolled navbar-light').removeClass('navbar-dark');
+            } else {
+                $('nav').addClass('navbar-dark');
+            }
+        });
     }
 }

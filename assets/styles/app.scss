@@ -5,6 +5,8 @@ $dark: #0c0c0c;
 $primary: #faf7f4;
 $secondary: #FF5349;
 
+$border-radius-img: 50%;
+
 @import "~bootstrap/scss/bootstrap";
 
 body {
@@ -25,4 +27,8 @@ body {
 
 .nav-link {
     text-transform: uppercase;
+}
+
+footer {
+    background-color: $light;
 }

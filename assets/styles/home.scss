@@ -2,6 +2,9 @@
 
 $line-width: 60px;
 $line-height: 1px;
+$font-size-h2: 1.75rem;
+$img-size: 20vw;
+$img-size-responsive: 30vw;
 
 .header {
     height: 100vh;
@@ -10,12 +13,52 @@ $line-height: 1px;
     background-size: cover;
 }
 
-h1 {
+h1, #presentation h2 {
     text-transform: uppercase;
 }
 
-.line {
-    background: $light;
+#presentation h2 {
+    font-size: $font-size-h2;
+}
+
+.line-light, .line-dark {
     width: $line-width;
     height: $line-height;
+}
+
+.line-light {
+    background: $light;
+}
+
+.line-dark {
+    background: $dark;
+}
+
+.img-presentation {
+    background: black;
+    overflow: hidden;
+    border-radius: $border-radius-img;
+    width: $img-size;
+    img {
+        opacity: 0.8;
+        width: $img-size;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .presentation-responsive {
+        flex-direction: column-reverse;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        .text-presentation {
+            text-align: justify !important;
+        }
+        .img-presentation {
+            margin-bottom: 2rem;
+            width: $img-size-responsive;
+            img {
+                width: $img-size-responsive;
+            }
+        }
+    }
 }
