@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block body %}
+    <section id="realisation-details" class="d-flex flex-column align-items-center mt-5">
+        <h2 class="my-4 text-center text-uppercase">{{ realisation.title }}</h2>
+        <div class="line-dark mb-3"></div>
+        <h3 class="text-center">{{ realisation.client }}</h3>
+        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <div class="carousel-inner">
+                {% if realisation.photo1 %}
+                    <div class="carousel-item active">
+                        <img src="/uploads/{{ realisation.photo1 }}" class="d-block w-100" alt="{{ realisation.title }}">
+                    </div>
+                {% endif %}
+                {% if realisation.photo2 %}
+                    <div class="carousel-item">
+                        <img src="/uploads/{{ realisation.photo2 }}" class="d-block w-100" alt="{{ realisation.title }}">
+                    </div>
+                {% endif %}
+                {% if realisation.photo3 %}
+                    <div class="carousel-item active">
+                        <img src="/uploads/{{ realisation.photo3 }}" class="d-block w-100" alt="{{ realisation.title }}">
+                    </div>
+                {% endif %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+        <div>
+            {{ realisation.description }}
+        </div>
+        <a href="{{ realisation.link }}" class="btn btn-dark my-4">Voir le site</a>
+    </section>
+{% endblock %}

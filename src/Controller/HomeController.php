@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Realisation;
 use App\Form\ContactType;
 use App\Repository\RealisationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,9 +50,21 @@ class HomeController extends AbstractController
             ]);
         }
 
-        return $this->render('home.html.twig', [
+        return $this->render('home/home.html.twig', [
             'realisations' => $realisations,
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/realisations/{id}", name="realisation", methods={"GET"})
+     * @param Realisation $realisation
+     * @return Response
+     */
+    public function show(Realisation $realisation): Response
+    {
+        return $this->render('home/realisation.html.twig', [
+            'realisation' => $realisation,
         ]);
     }
 }

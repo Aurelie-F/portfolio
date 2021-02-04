@@ -10,7 +10,16 @@
     </head>
     <body>
     <header>{% include '_includes/_navbar.html.twig' %}</header>
+    <div class="container-fluid p-0 m-0">
+        <section class="header d-flex align-items-center justify-content-center">
+            <div class="text-light mb-4 d-flex flex-column align-items-center">
+                <h1 class="mb-1">Aurélie <strong>Frarin</strong></h1>
+                <div class="line-light my-2"></div>
+                <h2>Développeuse web</h2>
+            </div>
+        </section>
         {% block body %}{% endblock %}
+    </div>
     <footer class="fixed-bottom">{% include '_includes/_footer.html.twig' %}</footer>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
