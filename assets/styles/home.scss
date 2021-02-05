@@ -141,3 +141,9 @@ h1 {
         width: 50% !important;
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .skills {
+        display: none;
+    }
+}

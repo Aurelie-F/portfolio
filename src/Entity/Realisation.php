@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\RealisationRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -91,6 +93,16 @@ class Realisation
      * @ORM\Column(type="string", length=255)
      */
     private $link;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Skills::class)
+     */
+    private $skills;
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -293,5 +305,29 @@ class Realisation
     public function setUpdatedPhoto3(?DateTime $updatedPhoto3): void
     {
         $this->updatedPhoto3 = $updatedPhoto3;
+    }
+
+    /**
+     * @return Collection|Skills[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skills $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skills $skill): self
+    {
+        $this->skills->removeElement($skill);
+
+        return $this;
     }
 }

@@ -39,6 +39,13 @@
         <div>
             {{ realisation.description }}
         </div>
+        {% set skills = '' %}
+        {% for skill in realisation.skills %}
+            {% set skills = loop.last ? skills ~ skill.name : skills ~ skill.name ~ ' / ' %}
+        {% endfor %}
+        <div class="mt-2 text-muted">
+            {{ skills }}
+        </div>
         <a href="{{ realisation.link }}" class="btn btn-dark my-4">Voir le site</a>
     </section>
 {% endblock %}
