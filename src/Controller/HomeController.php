@@ -6,9 +6,13 @@ use App\Entity\Contact;
 use App\Entity\Realisation;
 use App\Form\ContactType;
 use App\Repository\RealisationRepository;
+use App\Repository\SkillsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,15 +23,19 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      * @param Request $request
      * @param RealisationRepository $realisationRepository
+     * @param SkillsRepository $skillsRepository
      * @param MailerInterface $mailer
-     * @return Response
+     * @return JsonResponse|RedirectResponse|Response
+     * @throws TransportExceptionInterface
      */
     public function index(
         Request $request,
         RealisationRepository $realisationRepository,
+        SkillsRepository $skillsRepository,
         MailerInterface $mailer
-    ): Response {
+    ) {
         $realisations = $realisationRepository->findAll();
+        $skills = $skillsRepository->findAll();
 
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -46,18 +54,31 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home', [
                 '_fragment' => 'contact-section',
                 'realisations' => $realisations,
+                'skills' => $skills,
                 'form' => $form->createView()
             ]);
         }
 
-        return $this->render('home/home.html.twig', [
-            'realisations' => $realisations,
-            'form' => $form->createView()
-        ]);
+        $filters = $request->get("skills");
+        $realisationsFiltered = $realisationRepository->findByFilter($filters);
+
+        if($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('home/_realisations.html.twig', [
+                    'realisations' => $realisationsFiltered
+                ])
+            ]);
+        } else {
+            return $this->render('home/home.html.twig', [
+                'realisations' => $realisations,
+                'skills' => $skills,
+                'form' => $form->createView()
+            ]);
+        }
     }
 
     /**
-     * @Route("/realisations/{id}", name="realisation", methods={"GET"})
+     * @Route("/realisations/{id}", name="realisations", methods={"GET"})
      * @param Realisation $realisation
      * @return Response
      */

@@ -24,33 +24,32 @@
             </div>
         </div>
     </section>
+    {% set queryParams = app.request.query.all %}
     <section id="realisation" class="d-flex flex-column align-items-center py-5">
         <h2 class="my-4 text-center text-uppercase">Réalisations</h2>
-        <div class="line-dark mb-4"></div>
-        <div class="row my-4 justify-content-around realisation-responsive">
-            {% for realisation in realisations %}
-                <div class="col-lg-4 mb-3">
-                    <div class="card text-white card-inverse">
-                        <img src="/uploads/{{ realisation.photo1 }}" class="card-img" alt="{{ realisation.title }}">
-                        <div class="card-img-overlay d-flex">
-                            <h3 class="card-title align-self-center text-center mx-auto">
-                                {{ realisation.title }}
-                            </h3>
-                            <div class="info align-self-center text-center mx-auto">
-                                <div class="skills">
-                                    {% for skill in realisation.skills %}
-                                        <span class="badge badge-light">{{ skill.name }}</span>
-                                    {% endfor %}
-                                </div>
-                                <a href="{{ path('realisation', {'id': realisation.id}) }}"
-                                   class="btn btn-outline-light mt-3">
-                                    Voir
-                                </a>
+        <div class="line-dark"></div>
+        <div class="row w-50 my-5">
+            <div class="col-12 d-flex justify-content-center">
+                <form id="filterForm">
+                    <fieldset class="form-group">
+                        {% for skill in skills %}
+                            {% if queryParams is not empty and queryParams.skills is defined %}
+                                {% set checked = (categorie.id in queryParams.skills) ? "checked" : "" %}
+                            {% else %}
+                                {% set checked = "" %}
+                            {% endif %}
+                            <div class="btn btn-secondary">
+                                <input class="form-check-input" type="checkbox" name="skills[]" id="skill{{ skill.id }}"
+                                       value="{{ skill.id }}" {{ checked }}>
+                                <label class="form-check-label" for="skill{{ skill.id }}">{{ skill.name }}</label>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+                        {% endfor %}
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div id="realisations-content" class="row mb-4 justify-content-around realisation-responsive">
+            {% include "home/_realisations.html.twig" %}
         </div>
     </section>
     <section id="contact-section" class="d-flex flex-column align-items-center pt-5">
@@ -70,4 +69,9 @@
             {{ form_end(form) }}
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
 {% endblock %}

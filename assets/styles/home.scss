@@ -85,7 +85,19 @@ h1 {
 
 #realisation {
     background-color: darken($primary, 5%);
+
+    .form-check-input {
+        position:absolute;
+        visibility:hidden;
+        opacity:0;
+    }
+
+    .btn {
+        padding: 0.25rem 0.5rem;
+    }
 }
+
+
 
 .card-inverse .card-img-overlay {
     background-color: $card-background-color;

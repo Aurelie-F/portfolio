@@ -19,22 +19,16 @@ class RealisationRepository extends ServiceEntityRepository
         parent::__construct($registry, Realisation::class);
     }
 
-    // /**
-    //  * @return Realisation[] Returns an array of Realisation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByFilter($filter)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $query = $this->createQueryBuilder('r');
+        if (null != $filter) {
+            $query->join('r.skills', 's')
+                ->where('s.id IN (:filter)')
+                ->setParameter('filter', $filter);
+            }
+        return $query->getQuery()->getResult();
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Realisation
