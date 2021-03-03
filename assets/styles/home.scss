@@ -28,7 +28,7 @@ h1 {
     text-transform: uppercase;
 }
 
-#presentation, #realisation, #contact-section {
+#presentation, #realisation, #contact-section, #skills-section {
     h2 {
         font-size: $font-size-h2;
     }
@@ -94,6 +94,7 @@ h1 {
 
     .btn {
         padding: 0.25rem 0.5rem;
+        margin: 0.25rem;
     }
 }
 
@@ -125,6 +126,11 @@ h1 {
     &:hover .info, &:focus .info, &:active .info {
         display: block;
     }
+
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.5em;
+    }
 }
 
 .card-inverse:hover {
@@ -148,8 +154,12 @@ h1 {
     padding-bottom: $spacing * 18;
 }
 
+#contact-section {
+    background-color: darken($primary, 5%);
+}
+
 @media screen and (min-width: 768px) {
-    .contact-responsive, .carousel {
+    .contact-responsive, .carousel, .skills-row, .realisation-row {
         width: 50% !important;
     }
 }
@@ -157,5 +167,10 @@ h1 {
 @media screen and (max-width: 1024px) {
     .skills {
         display: none;
+    }
+
+    .skills-row {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
 }

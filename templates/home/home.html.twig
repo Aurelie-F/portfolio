@@ -28,10 +28,9 @@
     <section id="realisation" class="d-flex flex-column align-items-center py-5">
         <h2 class="my-4 text-center text-uppercase">Réalisations</h2>
         <div class="line-dark"></div>
-        <div class="row w-50 my-5">
-            <div class="col-12 d-flex justify-content-center">
+        <div class="row my-5 justify-content-center realisation-row">
+            <div class="col-8 d-flex justify-content-center">
                 <form id="filterForm">
-                    <fieldset class="form-group">
                         {% for skill in skills %}
                             {% if queryParams is not empty and queryParams.skills is defined %}
                                 {% set checked = (categorie.id in queryParams.skills) ? "checked" : "" %}
@@ -44,12 +43,25 @@
                                 <label class="form-check-label" for="skill{{ skill.id }}">{{ skill.name }}</label>
                             </div>
                         {% endfor %}
-                    </fieldset>
                 </form>
             </div>
         </div>
         <div id="realisations-content" class="row mb-4 justify-content-around realisation-responsive">
             {% include "home/_realisations.html.twig" %}
+        </div>
+    </section>
+    <section id="skills-section" class="d-flex flex-column align-items-center py-5">
+        <h2 class="my-4 text-center text-uppercase">Compétences</h2>
+        <div class="line-dark"></div>
+        <div class="row my-5 skills-row">
+            {% for skill in skills %}
+                <div class="col-6 col-lg-3 d-flex justify-content-center align-items-center mb-2">
+                    <figure class="figure text-center">
+                        <img src="/uploads/{{ skill.logo }}" class="figure-img img-fluid rounded" alt="Logo {{ skill.name }}">
+                        <figcaption class="figure-caption">{{ skill.name }}</figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
         </div>
     </section>
     <section id="contact-section" class="d-flex flex-column align-items-center pt-5">

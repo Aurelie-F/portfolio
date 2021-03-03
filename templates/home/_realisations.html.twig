@@ -9,7 +9,7 @@
                 <div class="info align-self-center text-center mx-auto">
                     <div class="skills">
                         {% for skill in realisation.skills %}
-                            <span class="badge badge-light">{{ skill.name }}</span>
+                            <span class="badge badge-dark">{{ skill.name }}</span>
                         {% endfor %}
                     </div>
                     <a href="{{ path('realisations', {'id': realisation.id}) }}"
