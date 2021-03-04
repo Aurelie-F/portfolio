@@ -21,6 +21,25 @@ body {
     text-transform: uppercase;
 }
 
+.btn-top {
+    color: $light;
+
+    &:hover {
+        color: rgba(0, 0, 0, 0.5) !important;
+    }
+}
+
+.btn-scrolled {
+    color: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(0, 0, 0, 0.5);
+
+    &:hover {
+        background-color: $dark;
+        color: $light !important;
+        border-color: transparent;
+    }
+}
+
 footer {
     background-color: $light;
     box-shadow: 0 -6px 30px rgba(0,0,0,0.1);

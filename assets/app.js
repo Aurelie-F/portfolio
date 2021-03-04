@@ -30,8 +30,10 @@ $(".navbar .nav-link").on("click", function(){
 });
 
 $(window).scroll(function () {
-    let $height = $(window).height();
-    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height - 5);
+    let $height = (typeof window.outerHeight != 'undefined') ?
+        Math.max(window.outerHeight, $(window).height()) - 20 : $(window).height();
+    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height - 10);
+    $('.nav-item .btn').toggleClass('btn-top btn-scrolled', $(this).scrollTop() > $height - 10);
     $('footer').toggleClass('scrolled', $(this).scrollTop() > 1);
 });
 
@@ -50,7 +52,7 @@ function responsive_resize(){
         $('nav').addClass('navbar-dark');
         $(window).scroll(function () {
             let $height = $(window).height();
-            if ($(this).scrollTop() > $height) {
+            if ($(this).scrollTop() > $height - 40) {
                 $('nav').addClass('scrolled navbar-light').removeClass('navbar-dark');
             } else {
                 $('nav').addClass('navbar-dark');

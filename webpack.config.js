@@ -19,6 +19,11 @@ Encore
         // optional target path, relative to the output dir
         to: '/images/[name].[ext]',
     })
+    .copyFiles({
+        from: './assets/pdf',
+        // optional target path, relative to the output dir
+        to: '/pdf/[name].[ext]',
+    })
 
     /*
      * ENTRY CONFIG
