@@ -1,0 +1,14 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Modifier la compétence #{{ skill.id }}</h1>
+
+    {{ include('skills/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <div class="row my-5">
+        <div class="col-1 mr-2">
+            <a class="btn btn-outline-dark" href="{{ path('skills_index') }}">Retour</a>
+        </div>
+        {{ include('skills/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

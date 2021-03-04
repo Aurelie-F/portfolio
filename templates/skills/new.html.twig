@@ -1,0 +1,9 @@
+{% extends 'admin-base.html.twig' %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Créer une nouvelle compétence</h1>
+
+    {{ include('skills/_form.html.twig') }}
+
+    <a class="btn btn-outline-dark mt-5" href="{{ path('skills_index') }}">Retour</a>
+{% endblock %}
