@@ -30,10 +30,9 @@ $(".navbar .nav-link").on("click", function(){
 });
 
 $(window).scroll(function () {
-    let $height = (typeof window.outerHeight != 'undefined') ?
-        Math.max(window.outerHeight, $(window).height()) - 20 : $(window).height();
-    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height - 10);
-    $('.nav-item .btn').toggleClass('btn-top btn-scrolled', $(this).scrollTop() > $height - 10);
+    let $height = $(window).height() - 40;
+    $('nav').toggleClass('scrolled navbar-light', $(this).scrollTop() > $height);
+    $('.nav-item .btn').toggleClass('btn-top btn-scrolled', $(this).scrollTop() > $height);
     $('footer').toggleClass('scrolled', $(this).scrollTop() > 1);
 });
 
